@@ -29,8 +29,12 @@ interface ItemProps {
 const Item: React.FC<ItemProps> = ({ item }: ItemProps) => {
   const classes = useStyles();
 
+  const handlerOnClick = () => {
+    window.open(item.url, "_blank");
+  };
+
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} onClick={handlerOnClick}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
