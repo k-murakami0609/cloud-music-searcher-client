@@ -5,6 +5,7 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
+import ApiTypes from "../../../const/ApiTypes";
 import { SearchResponse } from "../../../services/api/apiClient";
 
 const useStyles = makeStyles({
@@ -33,6 +34,17 @@ const Item: React.FC<ItemProps> = ({ item }: ItemProps) => {
     window.open(item.url, "_blank");
   };
 
+  const convertApiTypesToString = () => {
+    switch (item.type) {
+      case ApiTypes.YOUTUBE:
+        return "youtube";
+      case ApiTypes.SPOTIFY:
+        return "spotify";
+      default:
+        return "";
+    }
+  };
+
   return (
     <Card className={classes.card} onClick={handlerOnClick}>
       <CardActionArea>
@@ -50,6 +62,9 @@ const Item: React.FC<ItemProps> = ({ item }: ItemProps) => {
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             {item.publishedAt}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {convertApiTypesToString()}
           </Typography>
         </CardContent>
       </CardActionArea>
