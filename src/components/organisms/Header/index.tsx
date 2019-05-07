@@ -73,7 +73,7 @@ const Header: React.FC<HeaderProps> = ({ onSubmit }: HeaderProps) => {
       <AppBar position="static">
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+            cloud-music-search
           </Typography>
           <div className={classes.grow} />
           <div className={classes.search}>
