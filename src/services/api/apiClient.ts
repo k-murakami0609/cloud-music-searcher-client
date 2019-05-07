@@ -7,6 +7,7 @@ export interface SearchResponse {
   publishedAt: string;
   thumbnails: string;
   type: number;
+  artist: string;
 }
 
 export default class ApiClient {

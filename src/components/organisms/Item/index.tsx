@@ -42,7 +42,7 @@ const Item: React.FC<ItemProps> = ({ item }: ItemProps) => {
             {item.title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            アーティスト
+            {item.artist}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             {item.publishedAt}
