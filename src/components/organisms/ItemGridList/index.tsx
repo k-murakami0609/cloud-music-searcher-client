@@ -29,7 +29,7 @@ const ItemGridList: React.FC<ItemGridListProps> = ({
       <Grid container spacing={3}>
         {items.map(item => {
           return (
-            <Grid item xs={3}>
+            <Grid item xs={3} key={item.url}>
               <Item item={item} />
             </Grid>
           );
