@@ -2,6 +2,7 @@ import * as React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { Item } from "../";
+import { SearchResponse } from "../../../services/api/apiClient";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -14,32 +15,25 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-// interface ItemGridListProps {}
+interface ItemGridListProps {
+  items: SearchResponse[];
+}
 
-const ItemGridList: React.FC<{}> = () => {
+const ItemGridList: React.FC<ItemGridListProps> = ({
+  items
+}: ItemGridListProps) => {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item xs={2}>
-          <Item />
-        </Grid>
-        <Grid item xs={2}>
-          <Item />
-        </Grid>
-        <Grid item xs={2}>
-          <Item />
-        </Grid>
-        <Grid item xs={2}>
-          <Item />
-        </Grid>
-        <Grid item xs={2}>
-          <Item />
-        </Grid>
-        <Grid item xs={2}>
-          <Item />
-        </Grid>
+        {items.map(item => {
+          return (
+            <Grid item xs={3}>
+              <Item item={item} />
+            </Grid>
+          );
+        })}
       </Grid>
     </div>
   );

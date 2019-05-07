@@ -5,6 +5,7 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
+import { SearchResponse } from "../../../services/api/apiClient";
 
 const useStyles = makeStyles({
   card: {
@@ -12,10 +13,20 @@ const useStyles = makeStyles({
   },
   media: {
     height: 128
+  },
+  title: {
+    display: "-webkit-box",
+    "-webkit-box-orient": "vertical",
+    "-webkit-line-clamp": "2",
+    overflow: "hidden"
   }
 });
 
-function Item() {
+interface ItemProps {
+  item: SearchResponse;
+}
+
+const Item: React.FC<ItemProps> = ({ item }: ItemProps) => {
   const classes = useStyles();
 
   return (
@@ -23,23 +34,23 @@ function Item() {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
+          image={item.thumbnails}
+          title={item.title}
         />
         <CardContent>
-          <Typography gutterBottom variant="h6" component="h2">
-            曲名
+          <Typography variant="body2" component="p" className={classes.title}>
+            {item.title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             アーティスト
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            リリース日
+            {item.publishedAt}
           </Typography>
         </CardContent>
       </CardActionArea>
     </Card>
   );
-}
+};
 
 export default Item;

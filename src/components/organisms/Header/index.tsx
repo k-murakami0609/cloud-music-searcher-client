@@ -61,6 +61,13 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ onSubmit }: HeaderProps) => {
   const classes = useStyles();
 
+  const handlerKeyDown = (e: any) => {
+    if (e.keyCode === 13) {
+      const value = e.target.value;
+      onSubmit(value);
+    }
+  };
+
   return (
     <div className={classes.grow}>
       <AppBar position="static">
@@ -74,7 +81,7 @@ const Header: React.FC<HeaderProps> = ({ onSubmit }: HeaderProps) => {
               <SearchIcon />
             </div>
             <InputBase
-              onBlur={onSubmit as any}
+              onKeyDown={handlerKeyDown}
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
