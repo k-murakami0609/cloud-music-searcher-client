@@ -1,5 +1,5 @@
 const createSearchUrl = () => {
-  return `${process.env.REACT_APP_API_URL}/helloWorld`;
+  return `${process.env.REACT_APP_API_URL}/search`;
 };
 
 export { createSearchUrl };
